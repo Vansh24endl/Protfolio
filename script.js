@@ -1,312 +1,295 @@
 /* ==========================================================================
-   INTERACTIVE LOGIC & ANIMATIONS - VS PORTFOLIO
+   INTERACTIVE LOGIC & ANIMATIONS - VANSH DHUMAL PORTFOLIO
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    /* --- 1. Header Scroll Shadow & Glow --- */
-    const header = document.querySelector('.header');
-    const handleScroll = () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Init on load
 
-
-    /* --- 2. Mobile Menu Toggle --- */
+    /* --- 1. Responsive Mobile Navigation Toggle --- */
     const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    
-    if (menuToggle && navMenu) {
+    const navLinksContainer = document.getElementById('nav-links');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (menuToggle && navLinksContainer) {
         menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('open');
-            // Toggle hamburger animation state
+            navLinksContainer.classList.toggle('open');
             menuToggle.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
-        const navLinks = document.querySelectorAll('.nav-link');
+        // Close mobile panel on click of link
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navMenu.classList.remove('open');
+                navLinksContainer.classList.remove('open');
                 menuToggle.classList.remove('active');
             });
         });
     }
 
-
-    /* --- 3. Scroll Spy for Active Navigation Link --- */
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    const scrollSpy = () => {
-        let currentSectionId = '';
-        const scrollPosition = window.scrollY + 120; // Offset for sticky header
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSectionId}` || 
-                (currentSectionId === 'home' && link.getAttribute('href') === '#')) {
-                link.classList.add('active');
-            }
-        });
-    };
-    window.addEventListener('scroll', scrollSpy);
-    scrollSpy();
-
-
-    /* --- 4. Interactive Monospace Terminal Simulator --- */
+    /* --- 2. Monospace HUD Terminal Simulator (Hero Section) --- */
     const terminalOutput = document.getElementById('terminal-output');
-    const terminalBody = document.getElementById('terminal-body');
+    const typingTextElement = document.querySelector('.typing-text');
     
-    if (terminalOutput) {
-        // Core details structure
-        const details = [
-            { label: 'Name', val: 'Vansh' },
-            { label: 'Role', val: 'Full-Stack Developer' },
-            { label: 'Focus', val: 'AI Systems, Security, Image Processing' },
-            { label: 'Experience', val: 'Building impactful solutions with modern technologies' },
-            { label: 'Status', val: 'Available for Opportunities', accent: true }
+    if (typingTextElement && terminalOutput) {
+        const command = 'npm run init-portfolio';
+        const outputLines = [
+            '&gt; vd-portfolio@3.0.0 init',
+            '&gt; loading secure environment variables...',
+            '&gt; status: <span class="term-highlight">active_workspace</span>',
+            '&gt; initialising Vansh Dhumal specs... success'
         ];
 
-        // Store the original HTML content as mock backup
-        const finalHTML = terminalOutput.innerHTML;
-        
-        // Clear terminal output initially
+        // Clear initial text for dynamic load
+        typingTextElement.textContent = '';
         terminalOutput.innerHTML = '';
         
-        // Let's create an elegant typewriter effect for the whoami shell command first
-        const promptTextElement = document.querySelector('.typing-text');
-        if (promptTextElement) {
-            promptTextElement.textContent = '';
-            const command = 'whoami';
-            let charIndex = 0;
-            
-            const typeCommand = () => {
-                if (charIndex < command.length) {
-                    promptTextElement.textContent += command.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeCommand, 120);
-                } else {
-                    // Command typed! Now output system results after a short pause
-                    setTimeout(renderDetails, 400);
-                }
-            };
-            
-            // Start the typewriter command after 500ms
-            setTimeout(typeCommand, 600);
-        }
-
-        const renderDetails = () => {
-            let detailIndex = 0;
-
-            const printNextDetail = () => {
-                if (detailIndex < details.length) {
-                    const item = details[detailIndex];
-                    const p = document.createElement('p');
-                    
-                    // Create sub structures for alignment
-                    const labelSpan = document.createElement('span');
-                    labelSpan.className = 'term-label';
-                    labelSpan.textContent = item.label.padEnd(10, ' ');
-                    
-                    const sepSpan = document.createElement('span');
-                    sepSpan.className = 'term-sep';
-                    sepSpan.textContent = ' : ';
-                    
-                    const valSpan = document.createElement('span');
-                    if (item.accent) {
-                        valSpan.className = 'term-val neon-accent';
-                    } else {
-                        valSpan.className = 'term-val';
-                    }
-                    valSpan.textContent = item.val;
-                    
-                    p.appendChild(labelSpan);
-                    p.appendChild(sepSpan);
-                    p.appendChild(valSpan);
-                    
-                    terminalOutput.appendChild(p);
-                    
-                    // Scroll to bottom of terminal
-                    terminalBody.scrollTop = terminalBody.scrollHeight;
-                    
-                    detailIndex++;
-                    setTimeout(printNextDetail, 250);
-                }
-            };
-            
-            printNextDetail();
+        let charIndex = 0;
+        
+        const typeCommand = () => {
+            if (charIndex < command.length) {
+                typingTextElement.textContent += command.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeCommand, 80);
+            } else {
+                // Command fully typed! Wait and print build outputs
+                setTimeout(renderBuildLines, 300);
+            }
         };
+
+        const renderBuildLines = () => {
+            let lineIndex = 0;
+            
+            const printNextLine = () => {
+                if (lineIndex < outputLines.length) {
+                    const p = document.createElement('p');
+                    p.innerHTML = outputLines[lineIndex];
+                    terminalOutput.appendChild(p);
+                    lineIndex++;
+                    setTimeout(printNextLine, 200);
+                }
+            };
+            
+            printNextLine();
+        };
+
+        // Start console simulation sequence after 800ms
+        setTimeout(typeCommand, 800);
     }
 
+    /* --- 3. Viewport Scroll Spy & Fade Up Triggers --- */
+    const fadeUpElements = document.querySelectorAll('.fade-up');
 
-    /* --- 5. Scroll-Triggered Progress Bars & Counters --- */
-    const progressFills = document.querySelectorAll('.progress-fill');
-    const statBoxes = document.querySelectorAll('.stat-box');
-    
-    // Store original statistical targets
-    progressFills.forEach(fill => {
-        fill.dataset.targetWidth = fill.style.width;
-        fill.style.width = '0%'; // Reset for entry animation
-    });
-
-    const animateSkillsAndStats = (entries, observer) => {
+    const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Animate programming progress bars
-                const bars = entry.target.querySelectorAll('.progress-fill');
-                bars.forEach(bar => {
-                    bar.style.width = bar.dataset.targetWidth;
-                });
+                entry.target.classList.add('visible');
                 
-                // Count up numbers for Hero Stats
-                const numbers = document.querySelectorAll('.stat-num');
-                numbers.forEach(num => {
-                    const targetStr = num.textContent;
-                    // Extract numbers
-                    const hasPlus = targetStr.includes('+');
-                    const hasPercent = targetStr.includes('%');
-                    const hasK = targetStr.includes('K');
-                    
-                    let targetVal = parseFloat(targetStr.replace(/[^0-9]/g, ''));
-                    let currentVal = 0;
-                    const duration = 1500; // ms
-                    const increment = targetVal / (duration / 16); // ~60fps
-                    
-                    const updateCount = () => {
-                        currentVal += increment;
-                        if (currentVal < targetVal) {
-                            num.textContent = Math.floor(currentVal) + (hasPlus ? '+' : hasPercent ? '%' : hasK ? 'K+' : '');
-                            requestAnimationFrame(updateCount);
-                        } else {
-                            num.textContent = targetStr; // Snap to target
-                        }
-                    };
-                    
-                    updateCount();
+                // If it is a stat number inside, trigger rolling count
+                const statNums = entry.target.querySelectorAll('.stat-number');
+                statNums.forEach(num => {
+                    if (!num.classList.contains('counted')) {
+                        animateCounter(num);
+                    }
                 });
-                
-                // Unobserve once triggered
-                observer.unobserve(entry.target);
             }
         });
-    };
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px'
+    });
 
-    // Use Intersection Observer for trigger
-    const options = { threshold: 0.15 };
-    const observer = new IntersectionObserver(animateSkillsAndStats, options);
-    
-    const statsSection = document.querySelector('.experience-achievements-stats');
-    if (statsSection) {
-        observer.observe(statsSection);
+    fadeUpElements.forEach(el => scrollObserver.observe(el));
+
+    // Fast-trigger sequential load of Hero elements instantly on page open
+    const heroFadeUps = document.querySelectorAll('#hero .fade-up');
+    heroFadeUps.forEach((el, index) => {
+        setTimeout(() => {
+            el.classList.add('visible');
+            const statNums = el.querySelectorAll('.stat-number');
+            statNums.forEach(num => animateCounter(num));
+        }, index * 120);
+    });
+
+    /* --- 4. Ease-Out Quadratic Stat Counters --- */
+    function animateCounter(numElement) {
+        numElement.classList.add('counted');
+        const targetStr = numElement.getAttribute('data-target');
+        const isDecimal = targetStr.includes('.');
+        const targetVal = parseFloat(targetStr);
+        
+        let startVal = 0;
+        const duration = 1500; // roll up duration
+        const frameRate = 1000 / 60; // 60fps standard
+        const totalFrames = Math.round(duration / frameRate);
+        let currentFrame = 0;
+
+        const counterInterval = setInterval(() => {
+            currentFrame++;
+            const progress = currentFrame / totalFrames;
+            const easeProgress = progress * (2 - progress); // ease-out quad curve
+            const currentVal = startVal + (targetVal - startVal) * easeProgress;
+
+            if (isDecimal) {
+                numElement.textContent = currentVal.toFixed(1);
+            } else {
+                numElement.textContent = Math.floor(currentVal) + (targetVal === 100 ? '+' : '');
+            }
+
+            if (currentFrame >= totalFrames) {
+                clearInterval(counterInterval);
+                numElement.textContent = targetStr + (targetVal === 100 ? '+' : '');
+            }
+        }, frameRate);
     }
 
-
-    /* --- 6. Glassmorphic Notification Alerts (UI Feedback) --- */
-    const createToast = (message) => {
-        // Remove existing toast if present
-        const oldToast = document.querySelector('.glass-toast');
-        if (oldToast) oldToast.remove();
+    /* --- 5. Custom Slide-Up Toast Notifications (Action Feedback HUD) --- */
+    const triggerToast = (message) => {
+        const activeToast = document.querySelector('.dev-min-toast');
+        if (activeToast) activeToast.remove();
 
         const toast = document.createElement('div');
-        toast.className = 'glass-toast';
+        toast.className = 'dev-min-toast';
         toast.style.cssText = `
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: rgba(13, 20, 35, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 245, 212, 0.3);
+            bottom: 2.2rem;
+            right: 2.2rem;
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid #6366f1;
             border-radius: 8px;
-            padding: 1rem 1.75rem;
-            color: #F3F4F6;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(0,245,212,0.15);
+            padding: 0.9rem 1.6rem;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
             z-index: 1000;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateY(20px);
+            transform: translateY(15px);
             opacity: 0;
             display: flex;
             align-items: center;
-            gap: 0.65rem;
+            gap: 0.6rem;
         `;
         
         toast.innerHTML = `
-            <span style="color: #00F5D4; font-size: 1.1rem;">⚡</span>
+            <span style="color: #06b6d4; font-weight: bold;">✦</span>
             <span>${message}</span>
         `;
         
         document.body.appendChild(toast);
         
-        // Trigger show animation
+        // Trigger reveal
         setTimeout(() => {
             toast.style.transform = 'translateY(0)';
             toast.style.opacity = '1';
         }, 50);
 
-        // Hide and remove toast
+        // Auto dismiss
         setTimeout(() => {
-            toast.style.transform = 'translateY(20px)';
+            toast.style.transform = 'translateY(15px)';
             toast.style.opacity = '0';
             setTimeout(() => toast.remove(), 400);
         }, 3200);
     };
 
-    // Action button listeners
-    const downloadBtn = document.getElementById('download-resume');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', (e) => {
+    /* --- 6. Fully Original Secure Contact CLI Shell Interactive Form --- */
+    const contactCliForm = document.getElementById('contact-cli-form');
+    const tunnelLogs = document.getElementById('tunnel-logs');
+    const sshSubmitBtn = document.getElementById('ssh-submit-btn');
+
+    if (contactCliForm && tunnelLogs && sshSubmitBtn) {
+        contactCliForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            createToast('Downloading VS Resume package (mock output)...');
+
+            // Fetch input parameters
+            const cliNameVal = document.getElementById('cli-name').value;
+            const cliEmailVal = document.getElementById('cli-email').value;
+            const cliMsgVal = document.getElementById('cli-message').value;
+
+            // Clear previous shell logs and reveal logs box
+            tunnelLogs.innerHTML = '';
+            tunnelLogs.classList.add('active');
+            
+            // Disable submit to prevent secondary spamming during script loop
+            sshSubmitBtn.disabled = true;
+            sshSubmitBtn.style.opacity = '0.5';
+            sshSubmitBtn.style.cursor = 'not-allowed';
+
+            // Logs script lines for rendering
+            const secureTunnelLogs = [
+                { text: `vd-shell:~$ ssh -T connect_vs --payload_name="${cliNameVal}"`, class: '' },
+                { text: 'Initializing secure endpoint sockets...', class: '' },
+                { text: 'ESTABLISHING SECURE TCP HANDSHAKE ON SECURE PORT 443... SUCCESS', class: 'cyan' },
+                { text: 'Requesting ephemeral secure session token...', class: '' },
+                { text: 'Session Key Exchange: Diffie-Hellman Group14 active.', class: 'indigo' },
+                { text: 'GENERATING AES-256 SYMMETRIC PAYLOAD KEY... SUCCESS', class: 'indigo' },
+                { text: 'ENCRYPTING MESSAGE DATA BUFFER FOR TRANSMISSION...', class: 'indigo' },
+                { text: `TRANSMITTING ENCRYPTED CYBERPACKETS TO stylis.vs.dev@gmail.com...`, class: 'pink' },
+                { text: 'TUNNEL COMPLETE: 100% MESSAGE PACKETS TUNNELED SUCCESSFULLY.', class: 'green' },
+                { text: 'vd-shell:~$ connection socket closed. tunnel terminated.', class: 'green' }
+            ];
+
+            let logIndex = 0;
+
+            const printNextLogLine = () => {
+                if (logIndex < secureTunnelLogs.length) {
+                    const item = secureTunnelLogs[logIndex];
+                    const div = document.createElement('div');
+                    div.className = `log-line ${item.class}`;
+                    div.innerHTML = item.text;
+                    tunnelLogs.appendChild(div);
+
+                    // Auto scroll to bottom of shell box
+                    tunnelLogs.scrollTop = tunnelLogs.scrollHeight;
+
+                    logIndex++;
+                    setTimeout(printNextLogLine, 180);
+                } else {
+                    // Fully tunneled! Show success toast and clear prompts
+                    triggerToast('Encrypted payload tunneled successfully to Vansh.');
+                    contactCliForm.reset();
+
+                    // Re-enable form fields
+                    setTimeout(() => {
+                        sshSubmitBtn.disabled = false;
+                        sshSubmitBtn.style.opacity = '1';
+                        sshSubmitBtn.style.cursor = 'pointer';
+                    }, 800);
+                }
+            };
+
+            printNextLogLine();
         });
     }
 
-    const demoLinks = document.querySelectorAll('.project-link');
-    demoLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const projName = link.closest('.project-info').querySelector('.project-card-title').textContent;
-            createToast(`Launching sandboxed environment for "${projName}"...`);
-        });
+    /* --- 7. Traditional Actions & Mock Downloads --- */
+    const downloadActions = [
+        document.getElementById('resume-download'),
+        document.getElementById('resume-download-btn')
+    ];
+
+    downloadActions.forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                triggerToast('Packaging Vansh Dhumal\'s secure resume profile...');
+                
+                setTimeout(() => {
+                    triggerToast('Secure PDF package downloaded.');
+                }, 1400);
+            });
+        }
     });
 
-    const timelineLink = document.querySelector('.timeline-full-link');
-    if (timelineLink) {
-        timelineLink.addEventListener('click', (e) => {
+    const liveDemos = document.querySelectorAll('.live-demo-trigger');
+    liveDemos.forEach(demo => {
+        demo.addEventListener('click', (e) => {
             e.preventDefault();
-            createToast('Redirecting to full interactive timeline system...');
+            const projectCard = demo.closest('.project-card');
+            const projectTitle = projectCard ? projectCard.querySelector('.project-title').textContent : 'System';
+            triggerToast(`Initializing sandbox tunnel for "${projectTitle}" deployment...`);
         });
-    }
-    
-    const viewCertificationsLink = document.querySelector('.card-bottom-link');
-    if (viewCertificationsLink) {
-        viewCertificationsLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            createToast('Opening certified ledger verification archive...');
-        });
-    }
-
-    const footerCta = document.querySelector('.btn-contact-footer');
-    if (footerCta) {
-        footerCta.addEventListener('click', (e) => {
-            createToast('Redirecting down to contact system form...');
-        });
-    }
+    });
 
 });
