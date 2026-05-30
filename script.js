@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadActions.forEach(btn => {
         if (btn) {
             btn.addEventListener('click', (e) => {
-                e.preventDefault();
+                // Allow browser to execute natural download trigger
                 triggerToast('Packaging Vansh Dhumal\'s secure resume profile...');
                 
                 setTimeout(() => {
