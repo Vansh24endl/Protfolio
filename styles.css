@@ -1455,7 +1455,7 @@ h1.hero-name {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
     gap: 2rem;
 }
 
@@ -2384,6 +2384,12 @@ footer strong {
     }
 }
 
+@media (max-width: 600px) {
+    .skills-grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 480px) {
     section {
         padding: 60px 4%;
@@ -2440,5 +2446,34 @@ footer strong {
     .contact-layout {
         margin-left: -5px;
         margin-right: -5px;
+    }
+
+    /* Polish for high-fidelity small screen responsiveness */
+    .pillar-card {
+        padding: 1.8rem 1.25rem;
+    }
+
+    .skills-category-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .project-content {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .info-wrap {
+        padding: 1.25rem;
+    }
+
+    .contact-cli-body {
+        padding: 1.25rem;
+    }
+
+    .cli-input-line {
+        gap: 0.5rem;
+    }
+
+    .cli-input {
+        min-width: 100%;
     }
 }
