@@ -24,6 +24,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* --- 1b. Dynamic Role Text Cycling --- */
+    const roleDynamicText = document.getElementById('role-dynamic-text');
+    if (roleDynamicText) {
+        const roles = [
+            'Full-Stack Developer',
+            'Java Developer',
+            'Cybersecurity Enthusiast'
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeSpeed = 80;
+        const deleteSpeed = 40;
+        const delayBetweenRoles = 2200;
+
+        const typeRole = () => {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                roleDynamicText.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                roleDynamicText.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                setTimeout(typeRole, delayBetweenRoles);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(typeRole, 200);
+            } else {
+                setTimeout(typeRole, isDeleting ? deleteSpeed : typeSpeed);
+            }
+        };
+
+        setTimeout(typeRole, 600);
+    }
+
     /* --- 2. Monospace HUD Terminal Simulator (Hero Section) --- */
     const terminalOutput = document.getElementById('terminal-output');
     const typingTextElement = document.querySelector('.typing-text');

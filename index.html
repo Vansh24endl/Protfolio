@@ -54,60 +54,82 @@
                     <span class="pulse-dot"></span> Available for Opportunities · Indore, India
                 </div>
                 <h1 class="hero-name fade-up">VANSH<br><span class="gradient-text">DHUMAL</span></h1>
-                <p class="hero-title fade-up">Full-Stack Systems Engineer & Security Enthusiast</p>
-                <p class="hero-tagline fade-up">Crafting high-performance web systems and designing secure, intelligent algorithms. Passionate about Java complexity, end-to-end cryptography, and computational image processing.</p>
+                
+                <!-- Dynamic Role Text -->
+                <div class="hero-role-wrapper fade-up">
+                    <span class="role-static">I am a </span>
+                    <span class="gradient-text-alt" id="role-dynamic-text">Full-Stack Developer</span>
+                    <span class="role-cursor">|</span>
+                </div>
+                
+                <p class="hero-tagline fade-up">Crafting high-performance web systems and designing secure, intelligent architectures. Passionate about Java complexity, end-to-end cryptography, and computational image processing.</p>
+                
                 <div class="hero-actions fade-up">
-                    <a href="#projects" class="btn-primary">Explore Blueprints →</a>
+                    <a href="vansh_resume.pdf" download="Vansh_Dhumal_Resume.pdf" class="btn-primary" id="hero-resume-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download Resume
+                    </a>
                     <a href="#contact" class="btn-outline">Access Shell Console</a>
+                </div>
+                
+                <!-- Hero Left Social Links -->
+                <div class="hero-socials fade-up">
+                    <a href="https://www.linkedin.com/in/vansh-dhumal-a4906a287" target="_blank" class="social-icon-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                    <a href="https://github.com/Vansh24endl" target="_blank" class="social-icon-link" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                    <a href="mailto:vanshdhumal5@gmail.com" class="social-icon-link" aria-label="Email">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.09-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </a>
                 </div>
             </div>
 
-            <!-- Hero Right: Interactive Developer Workspace HUD -->
+            <!-- Hero Right: Professional Image with Floating Terminal & Tech Icons -->
             <div class="hero-right fade-up">
-                <div class="dev-hud">
+                <div class="hero-visual-wrapper">
+                    <!-- Glow Underlay -->
                     <div class="hud-glow-orb"></div>
                     
-                    <!-- Monospace Code Terminal -->
-                    <div class="terminal-mockup">
+                    <!-- Portrait Image Frame -->
+                    <div class="hero-image-frame">
+                        <img src="developer_portrait.png" alt="Vansh Dhumal" class="hero-portrait">
+                    </div>
+                    
+                    <!-- Compact Decorative Floating Terminal -->
+                    <div class="floating-terminal terminal-mockup">
                         <div class="terminal-header">
                             <span class="term-dot close"></span>
                             <span class="term-dot minimize"></span>
                             <span class="term-dot maximize"></span>
-                            <span class="terminal-title">vanshdhumal@portfolio:~</span>
+                            <span class="terminal-title">vd@workspace:~</span>
                         </div>
                         <div class="terminal-body">
-                            <div class="term-line"><span class="term-prompt">vansh$</span> <span class="typing-text">npm run init-portfolio</span></div>
+                            <div class="term-line"><span class="term-prompt">vd$</span> <span class="typing-text">npm run init-portfolio</span></div>
                             <div class="terminal-output" id="terminal-output">
-                                <p>&gt; vd-portfolio@3.0.0 init</p>
-                                <p>&gt; loading secure environment variables...</p>
-                                <p>&gt; status: <span class="term-highlight">active_workspace</span></p>
-                                <p>&gt; initialising Vansh Dhumal specs...</p>
+                                <p>&gt; loading secure environment...</p>
                             </div>
-                            <div class="term-line"><span class="term-prompt">vansh$</span> <span class="terminal-cursor">_</span></div>
+                            <div class="term-line"><span class="term-prompt">vd$</span> <span class="terminal-cursor">_</span></div>
                         </div>
                     </div>
-
-                    <!-- Glowing Glassmorphic Metric Card -->
-                    <div class="dev-status-card">
-                        <div class="card-glow"></div>
-                        <div class="status-header">
-                            <div class="status-dot"></div>
-                            <span class="status-label">SYSTEM TELEMETRY</span>
-                        </div>
-                        <div class="hud-stats">
-                            <div class="hud-stat-item">
-                                <span class="stat-number" data-target="7.44">0</span>
-                                <span class="stat-label">B.Tech CSE CGPA</span>
-                            </div>
-                            <div class="hud-stat-item">
-                                <span class="stat-number" data-target="6">0</span>
-                                <span class="stat-label">System Deployments</span>
-                            </div>
-                            <div class="hud-stat-item">
-                                <span class="stat-number" data-target="100">0</span>
-                                <span class="stat-label">DSA Cases Solved</span>
-                            </div>
-                        </div>
+                    
+                    <!-- Floating Tech Icons: Java, Spring Boot, React, Docker, AWS -->
+                    <div class="floating-tech-icon tech-java" title="Java">
+                        <!-- Custom styled high-quality tech icon -->
+                        <span class="tech-icon-label">Java</span>
+                    </div>
+                    <div class="floating-tech-icon tech-spring" title="Spring Boot">
+                        <span class="tech-icon-label">Spring</span>
+                    </div>
+                    <div class="floating-tech-icon tech-react" title="React">
+                        <span class="tech-icon-label">React</span>
+                    </div>
+                    <div class="floating-tech-icon tech-docker" title="Docker">
+                        <span class="tech-icon-label">Docker</span>
+                    </div>
+                    <div class="floating-tech-icon tech-aws" title="AWS">
+                        <span class="tech-icon-label">AWS</span>
                     </div>
                 </div>
             </div>
