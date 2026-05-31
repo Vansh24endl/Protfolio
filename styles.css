@@ -55,6 +55,11 @@ html {
     /* sticky navbar offset */
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--bg-primary);
@@ -62,7 +67,6 @@ body {
     color: var(--text-primary);
     font-size: 16px;
     line-height: 1.65;
-    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -232,7 +236,7 @@ ul {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2.2rem;
+    gap: clamp(1rem, 2vw, 2.2rem);
 }
 
 .nav-link {
@@ -852,14 +856,14 @@ h1.hero-name {
 /* --- Skills (Layered Stack Model) --- */
 #skills {
     background-color: var(--bg-primary);
+    overflow: hidden; /* Clip horizontal marquee breakout margins */
 }
 
 /* --- Skills Marquee Borders (Infinite Scrolling Tracks) --- */
 .skills-marquee-border {
     position: relative;
-    width: 100vw;
-    left: 50%;
-    transform: translateX(-50%);
+    width: calc(100% + 16%);
+    margin-left: -8%;
     overflow: hidden;
     user-select: none;
     padding: 0.85rem 0;
@@ -1914,6 +1918,12 @@ footer strong {
 
     .navbar {
         padding: 0 6%;
+        height: 64px;
+    }
+
+    .skills-marquee-border {
+        width: calc(100% + 12%);
+        margin-left: -6%;
     }
 
     .hero-container {
@@ -1927,6 +1937,52 @@ footer strong {
 
     .academic-grid {
         gap: 2.5rem;
+    }
+
+    /* Responsive Hamburger Toggle drawer menu activated at 1024px to prevent horizontal squeeze */
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 64px;
+        left: -280px;
+        width: 280px;
+        height: calc(100vh - 64px);
+        background: rgba(3, 7, 18, 0.98);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        border-top: 1px solid rgba(255, 255, 255, 0.03);
+        box-shadow: 10px 0 40px rgba(0, 0, 0, 0.6);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.2rem;
+        transition: var(--transition-smooth);
+        z-index: 100;
+    }
+
+    .nav-links.open {
+        left: 0;
+    }
+
+    .nav-link {
+        font-size: 1.15rem;
+    }
+
+    /* Hamburger active bar rotates */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
     }
 }
 
@@ -2006,6 +2062,8 @@ footer strong {
     /* Skills Marquee Responsiveness */
     .skills-marquee-border {
         padding: 0.65rem 0;
+        width: calc(100% + 10%);
+        margin-left: -5%;
     }
 
     .skills-marquee-border.border-top {
@@ -2033,50 +2091,6 @@ footer strong {
         height: 16px;
     }
 
-
-    /* Responsive Hamburger Toggle links panel */
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 64px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 64px);
-        background: rgba(3, 7, 18, 0.98);
-        backdrop-filter: blur(24px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2.2rem;
-        transition: var(--transition-smooth);
-        border-top: 1px solid rgba(255, 255, 255, 0.03);
-        z-index: 100;
-    }
-
-    .nav-links.open {
-        left: 0;
-    }
-
-    .nav-link {
-        font-size: 1.15rem;
-    }
-
-    /* Hamburger active bar rotates */
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-    }
-
-    .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-    }
-
     h1.hero-name {
         letter-spacing: -2px;
     }
@@ -2097,41 +2111,62 @@ footer strong {
         padding: 0 4%;
     }
 
+    /* Skills Marquee Mobile Breakout */
+    .skills-marquee-border {
+        width: calc(100% + 8%);
+        margin-left: -4%;
+    }
+
     h1.hero-name {
         font-size: 2.8rem;
         letter-spacing: -1.5px;
     }
 
     .hero-visual-wrapper {
-        max-width: 320px;
-        height: 320px;
+        max-width: 285px;
+        height: 285px;
     }
 
     .hero-image-frame {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
+        border-radius: 16px;
     }
 
     .floating-terminal {
-        width: 170px;
-        left: -10px;
-        bottom: 0px;
+        width: 160px;
+        left: -15px;
+        bottom: -5px;
     }
 
-    .tech-react {
-        right: -30px;
-    }
-
-    .tech-aws {
-        left: -35px;
+    .floating-tech-icon {
+        padding: 0.3rem 0.55rem;
+        font-size: 0.62rem;
     }
 
     .tech-java {
-        left: -25px;
+        left: -15px;
+        top: 15%;
+    }
+
+    .tech-spring {
+        right: -10px;
+        top: 5%;
+    }
+
+    .tech-react {
+        right: -20px;
+        top: 40%;
     }
 
     .tech-docker {
-        right: -25px;
+        right: -15px;
+        bottom: 15%;
+    }
+
+    .tech-aws {
+        left: -20px;
+        bottom: 35%;
     }
 
     .projects-grid {
