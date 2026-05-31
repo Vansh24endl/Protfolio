@@ -8,23 +8,33 @@
 
 /* --- CSS Variables & Style Tokens --- */
 :root {
-    --bg-primary: #04060b;      /* Obsidian Obsidian Black */
-    --bg-secondary: #080c16;    /* Dark Carbon Slate */
-    --bg-accent: #0c1222;       /* Deep Telemetry Slate */
+    --bg-primary: #04060b;
+    /* Obsidian Obsidian Black */
+    --bg-secondary: #080c16;
+    /* Dark Carbon Slate */
+    --bg-accent: #0c1222;
+    /* Deep Telemetry Slate */
 
     --glass-card: rgba(8, 12, 22, 0.45);
     --glass-border: rgba(255, 255, 255, 0.05);
     --glass-border-glow: rgba(99, 102, 241, 0.25);
     --glass-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.8);
-    
-    --text-primary: #f8fafc;    /* Platinum White */
-    --text-secondary: #94a3b8;  /* Slate Muted */
-    --text-muted: #475569;      /* Carbon Dark */
 
-    --accent-indigo: #6366f1;   /* Neon Indigo */
-    --accent-cyan: #06b6d4;     /* Cyber Cyan */
-    --accent-green: #10b981;    /* Emerald Alert Green */
-    --accent-pink: #ec4899;     /* Laser Pink */
+    --text-primary: #f8fafc;
+    /* Platinum White */
+    --text-secondary: #94a3b8;
+    /* Slate Muted */
+    --text-muted: #475569;
+    /* Carbon Dark */
+
+    --accent-indigo: #6366f1;
+    /* Neon Indigo */
+    --accent-cyan: #06b6d4;
+    /* Cyber Cyan */
+    --accent-green: #10b981;
+    /* Emerald Alert Green */
+    --accent-pink: #ec4899;
+    /* Laser Pink */
 
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -32,9 +42,9 @@
 
     --transition-smooth: all 0.55s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     --grid-texture: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
 }
 
 /* --- Base Reset & Core Setup --- */
@@ -50,7 +60,8 @@ html {
     background-color: var(--bg-primary);
 }
 
-html, body {
+html,
+body {
     overflow-x: hidden;
     width: 100%;
 }
@@ -63,7 +74,8 @@ body {
     font-size: 16px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    cursor: none; /* Hide default cursor to enable gorgeous custom cursor tracker */
+    cursor: none;
+    /* Hide default cursor to enable gorgeous custom cursor tracker */
 }
 
 /* --- Global Section & Typographic Layouts --- */
@@ -74,14 +86,22 @@ section {
 }
 
 /* Base Headings - Editorial Touches */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-heading);
     letter-spacing: -0.02em;
     font-weight: 700;
 }
 
-a, button, input, textarea, label {
-    cursor: none; /* Force custom cursor on interactive nodes */
+a,
+button,
+input,
+textarea,
+label {
+    cursor: none;
+    /* Force custom cursor on interactive nodes */
 }
 
 a {
@@ -185,6 +205,7 @@ ul {
     0% {
         transform: translate(0, 0) scale(1);
     }
+
     100% {
         transform: translate(40px, -60px) scale(1.15);
     }
@@ -301,6 +322,7 @@ ul {
         opacity: 0.8;
         transform: translate(-50%, -50%) translate(0) rotate(var(--leaf-rotate)) scale(var(--leaf-scale));
     }
+
     100% {
         opacity: 0;
         transform: translate(-50%, -50%) translate(var(--leaf-drift), var(--leaf-fall)) rotate(calc(var(--leaf-rotate) + var(--leaf-spin))) scale(0.2);
@@ -312,7 +334,10 @@ ul {
     body {
         cursor: auto;
     }
-    .custom-cursor, .custom-cursor-glow, .leaf-trail {
+
+    .custom-cursor,
+    .custom-cursor-glow,
+    .leaf-trail {
         display: none !important;
     }
 }
@@ -365,12 +390,15 @@ ul {
         opacity: 0;
         transform: translate(-50%, 0) scale(var(--scale));
     }
+
     10% {
         opacity: 0.65;
     }
+
     90% {
         opacity: 0.35;
     }
+
     100% {
         opacity: 0;
         transform: translate(calc(-50% + var(--drift)), 105vh) scale(calc(var(--scale) * 0.75));
@@ -424,6 +452,7 @@ ul {
         width: 0;
         opacity: 0;
     }
+
     100% {
         width: 180px;
         opacity: 1;
@@ -445,6 +474,7 @@ ul {
         opacity: 0;
         transform: translateY(12px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -637,11 +667,14 @@ ul {
 }
 
 @keyframes emeraldPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
     }
+
     50% {
         opacity: 0.4;
         transform: scale(1.3);
@@ -1038,10 +1071,13 @@ h1.hero-name {
 }
 
 @keyframes float-slow {
-    0%, 100% {
+
+    0%,
+    100% {
         translate: 0 0px;
         rotate: 0deg;
     }
+
     50% {
         translate: 0 -10px;
         rotate: 1.5deg;
@@ -1049,10 +1085,13 @@ h1.hero-name {
 }
 
 @keyframes float-medium {
-    0%, 100% {
+
+    0%,
+    100% {
         translate: 0 0px;
         rotate: 0deg;
     }
+
     50% {
         translate: 0 -8px;
         rotate: -2deg;
@@ -1060,10 +1099,13 @@ h1.hero-name {
 }
 
 @keyframes float-fast {
-    0%, 100% {
+
+    0%,
+    100% {
         translate: 0 0px;
         rotate: 0deg;
     }
+
     50% {
         translate: 0 -6px;
         rotate: 1deg;
@@ -1272,13 +1314,23 @@ h1.hero-name {
 }
 
 @keyframes marqueeScrollLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 @keyframes marqueeScrollRight {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .stack-model-wrapper {
@@ -1414,32 +1466,135 @@ h1.hero-name {
 }
 
 /* Accent Glows for Tech Matrix Chips */
-.tag-java:hover { border-color: #f97316; box-shadow: 0 0 10px rgba(249, 115, 22, 0.15); }
-.tag-python:hover { border-color: #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.15); }
-.tag-js:hover { border-color: #eab308; box-shadow: 0 0 10px rgba(234, 179, 8, 0.15); }
-.tag-ts:hover { border-color: #2563eb; box-shadow: 0 0 10px rgba(37, 99, 235, 0.15); }
-.tag-cpp:hover { border-color: #6366f1; box-shadow: 0 0 10px rgba(99, 102, 241, 0.15); }
-.tag-sql:hover { border-color: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.15); }
-.tag-react:hover { border-color: #06b6d4; box-shadow: 0 0 10px rgba(6, 182, 208, 0.15); }
-.tag-next:hover { border-color: #f8fafc; box-shadow: 0 0 10px rgba(248, 250, 252, 0.15); }
-.tag-node:hover { border-color: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.15); }
-.tag-express:hover { border-color: #94a3b8; box-shadow: 0 0 10px rgba(148, 163, 184, 0.15); }
-.tag-tailwind:hover { border-color: #38bdf8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.15); }
-.tag-css:hover { border-color: #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.15); }
-.tag-api:hover { border-color: #f43f5e; box-shadow: 0 0 10px rgba(244, 63, 94, 0.15); }
-.tag-mongo:hover { border-color: #10b981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.15); }
-.tag-mysql:hover { border-color: #00758f; box-shadow: 0 0 10px rgba(0, 117, 143, 0.15); }
-.tag-aws:hover { border-color: #f97316; box-shadow: 0 0 10px rgba(249, 115, 22, 0.15); }
-.tag-firebase:hover { border-color: #eab308; box-shadow: 0 0 10px rgba(234, 179, 8, 0.15); }
-.tag-sec:hover { border-color: var(--accent-green); box-shadow: 0 0 10px rgba(16, 185, 129, 0.2); }
-.tag-image:hover { border-color: #d946ef; box-shadow: 0 0 10px rgba(217, 70, 239, 0.2); }
-.tag-design:hover { border-color: #8b5cf6; box-shadow: 0 0 10px rgba(139, 92, 246, 0.15); }
-.tag-ai:hover { border-color: var(--accent-cyan); box-shadow: 0 0 10px rgba(6, 182, 212, 0.2); }
-.tag-git:hover { border-color: #f05032; box-shadow: 0 0 10px rgba(240, 80, 50, 0.15); }
-.tag-github:hover { border-color: #f8fafc; box-shadow: 0 0 10px rgba(248, 250, 252, 0.15); }
-.tag-vscode:hover { border-color: #007acc; box-shadow: 0 0 10px rgba(0, 122, 204, 0.15); }
-.tag-figma:hover { border-color: #f24e1e; box-shadow: 0 0 10px rgba(242, 78, 30, 0.15); }
-.tag-linux:hover { border-color: #fcc624; box-shadow: 0 0 10px rgba(252, 198, 36, 0.15); }
+.tag-java:hover {
+    border-color: #f97316;
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.15);
+}
+
+.tag-python:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+}
+
+.tag-js:hover {
+    border-color: #eab308;
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.15);
+}
+
+.tag-ts:hover {
+    border-color: #2563eb;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.15);
+}
+
+.tag-cpp:hover {
+    border-color: #6366f1;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.15);
+}
+
+.tag-sql:hover {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.15);
+}
+
+.tag-react:hover {
+    border-color: #06b6d4;
+    box-shadow: 0 0 10px rgba(6, 182, 208, 0.15);
+}
+
+.tag-next:hover {
+    border-color: #f8fafc;
+    box-shadow: 0 0 10px rgba(248, 250, 252, 0.15);
+}
+
+.tag-node:hover {
+    border-color: #22c55e;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.15);
+}
+
+.tag-express:hover {
+    border-color: #94a3b8;
+    box-shadow: 0 0 10px rgba(148, 163, 184, 0.15);
+}
+
+.tag-tailwind:hover {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+}
+
+.tag-css:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+}
+
+.tag-api:hover {
+    border-color: #f43f5e;
+    box-shadow: 0 0 10px rgba(244, 63, 94, 0.15);
+}
+
+.tag-mongo:hover {
+    border-color: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+}
+
+.tag-mysql:hover {
+    border-color: #00758f;
+    box-shadow: 0 0 10px rgba(0, 117, 143, 0.15);
+}
+
+.tag-aws:hover {
+    border-color: #f97316;
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.15);
+}
+
+.tag-firebase:hover {
+    border-color: #eab308;
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.15);
+}
+
+.tag-sec:hover {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.tag-image:hover {
+    border-color: #d946ef;
+    box-shadow: 0 0 10px rgba(217, 70, 239, 0.2);
+}
+
+.tag-design:hover {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+}
+
+.tag-ai:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+}
+
+.tag-git:hover {
+    border-color: #f05032;
+    box-shadow: 0 0 10px rgba(240, 80, 50, 0.15);
+}
+
+.tag-github:hover {
+    border-color: #f8fafc;
+    box-shadow: 0 0 10px rgba(248, 250, 252, 0.15);
+}
+
+.tag-vscode:hover {
+    border-color: #007acc;
+    box-shadow: 0 0 10px rgba(0, 122, 204, 0.15);
+}
+
+.tag-figma:hover {
+    border-color: #f24e1e;
+    box-shadow: 0 0 10px rgba(242, 78, 30, 0.15);
+}
+
+.tag-linux:hover {
+    border-color: #fcc624;
+    box-shadow: 0 0 10px rgba(252, 198, 36, 0.15);
+}
 
 .dim-text {
     opacity: 0.65;
@@ -1517,9 +1672,17 @@ h1.hero-name {
     opacity: 0.85;
 }
 
-.mock-dot.close { background-color: #ef4444; }
-.mock-dot.minimize { background-color: #f59e0b; }
-.mock-dot.maximize { background-color: #10b981; }
+.mock-dot.close {
+    background-color: #ef4444;
+}
+
+.mock-dot.minimize {
+    background-color: #f59e0b;
+}
+
+.mock-dot.maximize {
+    background-color: #10b981;
+}
 
 .mock-date {
     margin-left: auto;
@@ -1579,21 +1742,80 @@ h1.hero-name {
 }
 
 /* Chip Colors */
-.tag-chip.tag-next { background: rgba(248, 250, 252, 0.03); color: #f8fafc; }
-.tag-chip.tag-tailwind { background: rgba(56, 189, 248, 0.04); color: #38bdf8; }
-.tag-chip.tag-ai { background: rgba(6, 182, 212, 0.04); color: var(--accent-cyan); }
-.tag-chip.tag-firebase { background: rgba(234, 179, 8, 0.04); color: #eab308; }
-.tag-chip.tag-react { background: rgba(6, 182, 208, 0.04); color: #06b6d4; }
-.tag-chip.tag-node { background: rgba(34, 197, 94, 0.04); color: #22c55e; }
-.tag-chip.tag-mongo { background: rgba(16, 185, 129, 0.04); color: #10b981; }
-.tag-chip.tag-sec { background: rgba(236, 72, 153, 0.04); color: var(--accent-pink); }
-.tag-chip.tag-python { background: rgba(59, 130, 246, 0.04); color: #3b82f6; }
-.tag-chip.tag-image { background: rgba(217, 70, 239, 0.04); color: #d946ef; }
-.tag-chip.tag-css { background: rgba(99, 102, 241, 0.04); color: var(--accent-indigo); }
-.tag-chip.tag-design { background: rgba(139, 92, 246, 0.04); color: #8b5cf6; }
-.tag-chip.tag-java { background: rgba(249, 115, 22, 0.04); color: #f97316; }
-.tag-chip.tag-linux { background: rgba(252, 198, 36, 0.04); color: #fcc624; }
-.tag-chip.tag-express { background: rgba(148, 163, 184, 0.04); color: #94a3b8; }
+.tag-chip.tag-next {
+    background: rgba(248, 250, 252, 0.03);
+    color: #f8fafc;
+}
+
+.tag-chip.tag-tailwind {
+    background: rgba(56, 189, 248, 0.04);
+    color: #38bdf8;
+}
+
+.tag-chip.tag-ai {
+    background: rgba(6, 182, 212, 0.04);
+    color: var(--accent-cyan);
+}
+
+.tag-chip.tag-firebase {
+    background: rgba(234, 179, 8, 0.04);
+    color: #eab308;
+}
+
+.tag-chip.tag-react {
+    background: rgba(6, 182, 208, 0.04);
+    color: #06b6d4;
+}
+
+.tag-chip.tag-node {
+    background: rgba(34, 197, 94, 0.04);
+    color: #22c55e;
+}
+
+.tag-chip.tag-mongo {
+    background: rgba(16, 185, 129, 0.04);
+    color: #10b981;
+}
+
+.tag-chip.tag-sec {
+    background: rgba(236, 72, 153, 0.04);
+    color: var(--accent-pink);
+}
+
+.tag-chip.tag-python {
+    background: rgba(59, 130, 246, 0.04);
+    color: #3b82f6;
+}
+
+.tag-chip.tag-image {
+    background: rgba(217, 70, 239, 0.04);
+    color: #d946ef;
+}
+
+.tag-chip.tag-css {
+    background: rgba(99, 102, 241, 0.04);
+    color: var(--accent-indigo);
+}
+
+.tag-chip.tag-design {
+    background: rgba(139, 92, 246, 0.04);
+    color: #8b5cf6;
+}
+
+.tag-chip.tag-java {
+    background: rgba(249, 115, 22, 0.04);
+    color: #f97316;
+}
+
+.tag-chip.tag-linux {
+    background: rgba(252, 198, 36, 0.04);
+    color: #fcc624;
+}
+
+.tag-chip.tag-express {
+    background: rgba(148, 163, 184, 0.04);
+    color: #94a3b8;
+}
 
 .project-links {
     display: flex;
@@ -1938,10 +2160,13 @@ h1.hero-name {
 }
 
 @keyframes marker-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0px rgba(6, 182, 212, 0.6), 0 0 8px var(--accent-cyan);
         transform: scale(1);
     }
+
     50% {
         box-shadow: 0 0 0 10px rgba(6, 182, 212, 0), 0 0 15px var(--accent-cyan);
         transform: scale(1.15);
@@ -2088,10 +2313,21 @@ h1.hero-name {
     margin-bottom: 0.35rem;
 }
 
-.log-line.cyan { color: var(--accent-cyan); }
-.log-line.green { color: var(--accent-green); }
-.log-line.indigo { color: var(--accent-indigo); }
-.log-line.pink { color: var(--accent-pink); }
+.log-line.cyan {
+    color: var(--accent-cyan);
+}
+
+.log-line.green {
+    color: var(--accent-green);
+}
+
+.log-line.indigo {
+    color: var(--accent-indigo);
+}
+
+.log-line.pink {
+    color: var(--accent-pink);
+}
 
 /* Custom toast feedback dialogs */
 .dev-min-toast {
@@ -2175,16 +2411,46 @@ footer strong {
     transform: translateY(0);
 }
 
-.fade-up:nth-child(2) { transition-delay: 0.1s; }
-.fade-up:nth-child(3) { transition-delay: 0.2s; }
-.fade-up:nth-child(4) { transition-delay: 0.3s; }
-.fade-up:nth-child(5) { transition-delay: 0.4s; }
+.fade-up:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.fade-up:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.fade-up:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.fade-up:nth-child(5) {
+    transition-delay: 0.4s;
+}
 
 /* ==========================================================================
    RESPONSIVE DESIGN & MOBILE OVERRIDES
    ========================================================================== */
 
 @media (max-width: 1300px) {
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.78rem;
+    }
+
+    .nav-cta {
+        padding: 0.45rem 0.9rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1024px) {
     section {
         padding: 80px 6%;
     }
@@ -2433,11 +2699,30 @@ footer strong {
         font-size: 0.62rem;
     }
 
-    .tech-java { left: -15px; top: 15%; }
-    .tech-spring { right: -10px; top: 5%; }
-    .tech-react { right: -20px; top: 40%; }
-    .tech-docker { right: -15px; bottom: 15%; }
-    .tech-aws { left: -20px; bottom: 35%; }
+    .tech-java {
+        left: -15px;
+        top: 15%;
+    }
+
+    .tech-spring {
+        right: -10px;
+        top: 5%;
+    }
+
+    .tech-react {
+        right: -20px;
+        top: 40%;
+    }
+
+    .tech-docker {
+        right: -15px;
+        bottom: 15%;
+    }
+
+    .tech-aws {
+        left: -20px;
+        bottom: 35%;
+    }
 
     .projects-grid {
         grid-template-columns: 1fr;

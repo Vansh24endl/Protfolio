@@ -17,23 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const particle = document.createElement('div');
             particle.className = 'loader-petal';
             particle.textContent = particlesList[Math.floor(Math.random() * particlesList.length)];
-            
+
             // Random properties to simulate floating depth
             const scale = (Math.random() * 0.7 + 0.4).toFixed(2);
             const drift = Math.floor(Math.random() * 200 - 100) + 'px';
             const spin = Math.floor(Math.random() * 360) + 'deg';
-            
+
             particle.style.left = Math.random() * 100 + 'vw';
             particle.style.top = Math.random() * -50 + 'px';
             particle.style.setProperty('--scale', scale);
             particle.style.setProperty('--drift', drift);
             particle.style.setProperty('--spin', spin);
-            
+
             // Stagger animation triggers
             particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
             particle.style.animationDelay = (Math.random() * 4) + 's';
             particle.style.animationIterationCount = 'infinite';
-            
+
             loaderParticles.appendChild(particle);
         }
 
@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function spawnTrailParticle(x, y) {
             const particle = document.createElement('div');
             particle.className = 'leaf-trail';
-            
+
             const trailList = ['0', '1', '+', '•'];
             particle.textContent = trailList[Math.floor(Math.random() * trailList.length)];
-            
+
             const scale = (Math.random() * 0.6 + 0.5).toFixed(2);
             const drift = Math.floor(Math.random() * 60 - 30) + 'px';
             const fall = Math.floor(Math.random() * 50 + 30) + 'px';
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapContainer = document.getElementById('contact-map');
     if (mapContainer) {
         const indoreCoords = [22.7196, 75.8577]; // Indore, India coordinates
-        
+
         // Initialize Leaflet map centered at Indore, disabling zoom scroll for fluid page scroll spy
         const map = L.map('contact-map', {
             center: indoreCoords,
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Place marker on Indore map canvas
         const marker = L.marker(indoreCoords, { icon: customNeonMarker }).addTo(map);
-        
+
         // Bind sleek command printout popup
         marker.bindPopup(`
             <div style="font-family:'Fira Code',monospace; font-size:11px; color:#f8fafc; background:#04060b; border:1px solid #1e293b; padding:6px 10px; border-radius:4px;">
@@ -437,13 +437,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         method: "POST",
                         body: formData
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        printPostLogs();
-                    })
-                    .catch(err => {
-                        printPostLogs(); // Fallback simulation on dispatch failure
-                    });
+                        .then(response => response.json())
+                        .then(data => {
+                            printPostLogs();
+                        })
+                        .catch(err => {
+                            printPostLogs(); // Fallback simulation on dispatch failure
+                        });
                 } else {
                     setTimeout(printPostLogs, 800);
                 }
