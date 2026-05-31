@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --- 1b. Dynamic Role Text Cycling --- */
     const roleDynamicText = document.getElementById('role-dynamic-text');
     if (roleDynamicText) {
+        // Clear static text to start typewriter cleanly from the beginning
+        roleDynamicText.textContent = '';
         const roles = [
             'Full-Stack Developer',
             'Java Developer',
