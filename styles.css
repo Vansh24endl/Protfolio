@@ -841,11 +841,11 @@ h1.hero-name {
 .hero-visual-wrapper {
     position: relative;
     width: 100%;
-    max-width: 440px;
-    height: 440px;
+    max-width: 500px;
+    height: 500px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     z-index: 5;
 }
 
@@ -854,45 +854,47 @@ h1.hero-name {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(99, 102, 241, 0.04) 50%, transparent 70%);
-    filter: blur(50px);
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(6, 182, 212, 0.15) 50%, transparent 70%);
+    filter: blur(60px);
     pointer-events: none;
     z-index: 1;
+    opacity: 0.8;
 }
 
 /* Elegant Portrait Container */
 .hero-image-frame {
     position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: var(--glass-shadow), 0 0 30px rgba(99, 102, 241, 0.05);
-    background: linear-gradient(135deg, rgba(8, 12, 22, 0.7) 0%, rgba(4, 6, 11, 0.95) 100%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     z-index: 2;
     transition: var(--transition-smooth);
+    overflow: visible;
 }
 
 .hero-image-frame:hover {
-    border-color: rgba(6, 182, 212, 0.25);
-    box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.9), 0 0 40px rgba(6, 182, 212, 0.15);
     transform: scale(1.02);
 }
 
 .hero-portrait {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.9;
+    max-height: 500px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.95;
     transition: var(--transition-smooth);
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
 }
 
 .hero-image-frame:hover .hero-portrait {
     opacity: 1;
-    transform: scale(1.03);
+    transform: translateY(-4px);
+    filter: drop-shadow(0 20px 45px rgba(99, 102, 241, 0.35));
 }
 
 /* Miniature Glass HUD Console (Floating) */
@@ -2569,13 +2571,17 @@ footer strong {
     .hero-visual-wrapper {
         margin-left: auto;
         margin-right: auto;
-        max-width: 380px;
-        height: 380px;
+        max-width: 400px;
+        height: 400px;
     }
 
     .hero-image-frame {
-        width: 260px;
-        height: 260px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-portrait {
+        max-height: 400px;
     }
 
     .floating-terminal {
@@ -2694,14 +2700,17 @@ footer strong {
     }
 
     .hero-visual-wrapper {
-        max-width: 285px;
-        height: 285px;
+        max-width: 300px;
+        height: 300px;
     }
 
     .hero-image-frame {
-        width: 200px;
-        height: 200px;
-        border-radius: 16px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-portrait {
+        max-height: 300px;
     }
 
     .floating-terminal {
