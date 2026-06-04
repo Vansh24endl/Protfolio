@@ -21,6 +21,18 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Zero-Flash Theme Script -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            let themeToApply = savedTheme;
+            if (savedTheme === 'system') {
+                themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', themeToApply);
+        })();
+    </script>
 </head>
 
 <body>
@@ -60,6 +72,11 @@
             <li><a href="#contact" class="nav-link">Shell Tunnel</a></li>
             <li><a href="vansh_resume.pdf" download="Vansh_Dhumal_Resume.pdf" class="nav-cta"
                     id="resume-download">Resume ↓</a></li>
+            <li>
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Cycle Theme Options">
+                    <!-- Icon loaded by JS -->
+                </button>
+            </li>
         </ul>
         <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
             <span class="bar"></span>
